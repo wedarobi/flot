@@ -4,6 +4,7 @@ Quick, dirty convert between IEEE754 hex and f32/f64.
 Hex values are automatically padded to 8/16 characters (appended zeroes) before processing.
 
 Warning: hardly any input validation.
+If the number contains a decimal point, convert float -> hex. Else, convert hex -> float.
 
 ```
 Options:
