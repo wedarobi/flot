@@ -30,6 +30,8 @@ char RESULT_F64[0x50] = {0};
 char RESULT_H32[0x50] = {0};
 char RESULT_H64[0x50] = {0};
 
+#define BUFLEN (0x50)
+
 static bool validate_str_hex(char *str, u32 len)
 {
     for (u32 i = 0; i < len; i++)
@@ -67,8 +69,9 @@ static bool validate_str_flt(char *str, u32 len)
 
 static bool do_cast_for_h32_to_f32(char *buf)
 {
-    char input[0x50] = {0};
+    char input[BUFLEN] = {0};
     strcpy(input, buf);
+    input[BUFLEN - 1] = '\0';
 
     if (!validate_str_hex(input, strlen(input)))
     {
@@ -99,8 +102,9 @@ static bool do_cast_for_h32_to_f32(char *buf)
 
 static bool do_cast_for_h64_to_f64(char *buf)
 {
-    char input[0x50] = {0};
+    char input[BUFLEN] = {0};
     strcpy(input, buf);
+    input[BUFLEN - 1] = '\0';
 
     if (!validate_str_hex(input, strlen(input)))
     {
@@ -131,8 +135,9 @@ static bool do_cast_for_h64_to_f64(char *buf)
 
 static bool do_cast_for_f32_to_h32(char *buf)
 {
-    char input[0x50] = {0};
+    char input[BUFLEN] = {0};
     strcpy(input, buf);
+    input[BUFLEN - 1] = '\0';
 
     if (!validate_str_flt(input, strlen(input)))
     {
@@ -149,8 +154,9 @@ static bool do_cast_for_f32_to_h32(char *buf)
 
 static bool do_cast_for_f64_to_h64(char *buf)
 {
-    char input[0x50] = {0};
+    char input[BUFLEN] = {0};
     strcpy(input, buf);
+    input[BUFLEN - 1] = '\0';
 
     if (!validate_str_flt(input, strlen(input)))
     {
@@ -169,8 +175,9 @@ static bool do_cast_for_f64_to_h64(char *buf)
 
 static s32 run(char *buf)
 {
-    char input[0x50] = {0};
+    char input[BUFLEN] = {0};
     strcpy(input, buf);
+    input[BUFLEN - 1] = '\0';
 
     if (FALSE);
 
