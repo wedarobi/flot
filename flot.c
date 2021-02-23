@@ -93,7 +93,7 @@ static bool do_cast_for_h32_to_f32(char *buf)
         p++;
     }
 
-    u32 numh = strtol(input, NULL, 16);
+    u32 numh = strtoul(input, NULL, 16);
     f32 numf = *(f32 *)&numh;
 
     sprintf(RESULT_F32, "%g", numf);
@@ -126,7 +126,7 @@ static bool do_cast_for_h64_to_f64(char *buf)
         p++;
     }
 
-    u64 numh = strtoll(input, NULL, 16);
+    u64 numh = strtoull(input, NULL, 16);
     f64 numd = *(f64 *)&numh;
 
     sprintf(RESULT_F64, "%lg", numd);
