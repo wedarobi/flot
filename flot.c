@@ -58,7 +58,7 @@ static bool validate_str_flt(char *str, u32 len)
             }
         }
 
-        if (!((c >= '0' && c <= '9') || (c == '.')))
+        if (!((c >= '0' && c <= '9') || (c == '.') || (c == '-')))
         {
             // invalid range
             return FALSE;
