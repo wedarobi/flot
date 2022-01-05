@@ -15,6 +15,10 @@ Options:
             - If detected as float:
                 use the 'f' suffix to treat as single, else treated as double.
 
+   -p :   Print float values with guarenteed precision
+            - 9 decimal places printed for float
+            - 17 decimal places printed for double
+
 Examples:  flot 3f8
            flot 0x4200000000000000
            flot 1.2
