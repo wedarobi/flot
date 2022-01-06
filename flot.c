@@ -24,7 +24,7 @@ CONVERSION_TYPE ct = CT_NULL;
 static struct {
     u32 SHOW_RAW_RESULT : 1;
     u32 PRECISE_OUTPUT  : 1;
-} OPTIONS = {0, 0};
+} OPTIONS = {0};
 
 char RESULT_F32[0x50] = {0};
 char RESULT_F64[0x50] = {0};
@@ -97,10 +97,7 @@ static bool do_cast_for_h32_to_f32(char *buf)
     u32 numh = strtoul(input, NULL, 16);
     f32 numf = *(f32 *)&numh;
 
-    if(OPTIONS.PRECISE_OUTPUT)
-        sprintf(RESULT_F32, "%.9g", numf);
-    else
-        sprintf(RESULT_F32, "%lg", numf);
+    sprintf(RESULT_F32, OPTIONS.PRECISE_OUTPUT ? "%.9g" : "%lg", numf);
 
     return TRUE;
 }
@@ -134,10 +131,7 @@ static bool do_cast_for_h64_to_f64(char *buf)
     u64 numh = strtoull(input, NULL, 16);
     f64 numd = *(f64 *)&numh;
 
-    if(OPTIONS.PRECISE_OUTPUT)
-        sprintf(RESULT_F64, "%.17lg", numd);
-    else
-        sprintf(RESULT_F64, "%lg", numd);
+    sprintf(RESULT_F64, OPTIONS.PRECISE_OUTPUT ? "%.17lg" : "%lg", numd);
 
     return TRUE;
 }
@@ -354,9 +348,9 @@ static void show_help(void)
         "\n               - If detected as float:"
         "\n                   use the 'f' suffix to treat as single, else treated as double."
         "\n"
-        "\n      -p :   Print float values with guarenteed precision"
-        "\n               - 9 decimal places printed for float"
-        "\n               - 17 decimal places printed for double" 
+        "\n      -p :   Print float values with guaranteed precision"
+        "\n               - 9  sig figs printed for float"
+        "\n               - 17 sig figs printed for double" 
         "\n"
         "\n   Examples:  flot 3f8"
         "\n              flot 0x4200000000000000"
