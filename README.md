@@ -9,6 +9,8 @@ Warning: hardly any input validation.
 
 ```
 Options:
+   -i :   Use interactive console.
+
    -a :   Autodetect and show one result.
             - If detected as hex:
                 numbers of length <= 8 will be treated as 32b, else 64b.
