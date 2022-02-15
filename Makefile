@@ -1,3 +1,5 @@
+BIN_DIR = bin
+
 %default: main
 
 ifeq ($(OS),Windows_NT)
@@ -6,14 +8,17 @@ else
 EXT=
 endif
 
-main:
-	make clean
-	gcc -Os -s src/*.c -o bin/flot$(EXT)
+main: $(BIN_DIR)
+	gcc -Os -s src/*.c -o $(BIN_DIR)/flot$(EXT)
 
 clean:
 ifeq ($(OS),Windows_NT)
-	- del bin/flot.exe
+	- del /s /q $(BIN_DIR)
 else
-	- rm -f bin/flot
+	- rm -rf $(BIN_DIR)
 endif
 
+$(BIN_DIR):
+	mkdir $@
+
+.PHONY: main clean
