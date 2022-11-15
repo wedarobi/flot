@@ -9,7 +9,7 @@ EXT=
 endif
 
 main: $(BIN_DIR)
-	gcc -Os -s src/*.c -o $(BIN_DIR)/flot$(EXT)
+	gcc -fcommon -Os -s src/*.c -o $(BIN_DIR)/flot$(EXT)
 
 clean:
 ifeq ($(OS),Windows_NT)
